@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLibrary
+namespace ClassLibrary.Models
 {
     /// <summary>
     /// Guard Class against Nulls Listkov Subsitution 

@@ -1,9 +1,10 @@
-﻿using I_Interfaces;
+﻿
+using ClassLibrary.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace L_NullObjectDesignedClassLibrary
+namespace ClassLibrary.Models
 {
     /// <summary>
     /// null object pattern of Users Database

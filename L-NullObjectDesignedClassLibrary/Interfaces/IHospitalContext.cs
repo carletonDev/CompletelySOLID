@@ -1,10 +1,10 @@
-﻿using L_NullObjectDesignedClassLibrary;
+﻿using ClassLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLibrary
+namespace ClassLibrary.Interfaces
 {
     public interface IHospitalContext
     {

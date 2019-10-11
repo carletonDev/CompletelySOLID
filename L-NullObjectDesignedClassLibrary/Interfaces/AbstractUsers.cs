@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace I_Interfaces
+namespace ClassLibrary.Interfaces
 {
     /// <summary>
     /// Null object pattern implementation
