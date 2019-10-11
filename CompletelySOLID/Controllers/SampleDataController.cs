@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary;
 using ClassLibrary.Interfaces;
-
+using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompletelySOLID.Controllers

@@ -1,4 +1,6 @@
 using ClassLibrary;
+using ClassLibrary.Interfaces;
+using ClassLibrary.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

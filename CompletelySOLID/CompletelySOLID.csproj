@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\L-NullObjectDesignedClassLibrary\ClassLibrary.csproj" />
+    <ProjectReference Include="..\..\..\CompletelySOLID\ClassLibrary\ClassLibrary.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
