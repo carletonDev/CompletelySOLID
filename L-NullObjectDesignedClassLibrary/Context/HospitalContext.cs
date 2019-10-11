@@ -17,6 +17,9 @@ namespace ClassLibrary
         public virtual DbSet<Hospital>Hospital{get;set;}
         public virtual DbSet<Bills> Bills { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Rooms> Rooms { get; set; }
+        public virtual DbSet<Salary> Salary { get; set; }
+        public virtual DbSet<UserRoleHospital> UserRoleHospital { get; set; }
 
 
     }

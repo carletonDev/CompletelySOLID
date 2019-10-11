@@ -12,6 +12,11 @@ namespace ClassLibrary.Interfaces
 
          DbSet<Hospital> Hospital { get; set; }
 
+        DbSet<Bills> Bills { get; set; }
+        DbSet<Roles> Roles { get; set; }
+        DbSet<Rooms> Rooms { get; set; }
+        DbSet<Salary> Salary { get; set; }
+        DbSet<UserRoleHospital> UserRoleHospital { get; set; }
 
     }
 }
