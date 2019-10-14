@@ -13,18 +13,20 @@ namespace ClassLibrary.Interfaces
         {
             get { return new NullUserRoleHospital(); }
         }
+        public virtual int urhid { get; set; }
         public virtual Roles Role { get; set; }
         public virtual Users Users { get; set; }
         public virtual Hospital Hospital { get; set; }
-        public virtual DateTime StartTime { get; set; }
-        public virtual DateTime EndTime { get; set; }
+        public virtual DateTime? StartTime { get; set; }
+        public virtual DateTime? EndTime { get; set; }
     }
     public class NullUserRoleHospital:AbstractUserRoleHospital
     {
+        public override int urhid { get => 0; }
         public override Roles Role { get => null; }
         public override Users Users { get => null; }
         public override Hospital Hospital { get => null; }
-        public override DateTime StartTime { get => DateTime.Now; }
-        public override DateTime EndTime { get => DateTime.Now; }
+        public override DateTime? StartTime { get => DateTime.Now; }
+        public override DateTime? EndTime { get => DateTime.Now; }
     }
 }

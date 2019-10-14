@@ -1,18 +1,16 @@
-﻿using ClassLibrary.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Interfaces
+namespace ClassLibrary.EFAutoGen
 {
-    public interface IHospitalContext
+   public interface IHospitalContext
     {
-         DbSet<Users> Users { get; set; }
+        DbSet<Users> Users { get; set; }
 
-         DbSet<Hospital> Hospital { get; set; }
+        DbSet<Hospital> Hospital { get; set; }
 
         DbSet<Bills> Bills { get; set; }
         DbSet<Roles> Roles { get; set; }
@@ -22,5 +20,6 @@ namespace ClassLibrary.Interfaces
 
         Task SaveChangesAsync();
         void ModifyState(Users users);
+
     }
 }
