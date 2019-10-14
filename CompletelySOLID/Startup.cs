@@ -39,7 +39,7 @@ namespace CompletelySOLID
             services.Add(new ServiceDescriptor(typeof(IHospitalContext), new HospitalContext()));
             services.Add(new ServiceDescriptor(typeof(IGuard), new Guard()));
             //configure DB context with connection string from appsettings.json (also have the app configuration class on model configuring to see both methods)
-            services.AddDbContext<HospitalContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Context")));
+            //services.AddDbContext<HospitalContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Context")));
             //edit later to make it safe against click jacking
             services.AddCors(options =>
             {
