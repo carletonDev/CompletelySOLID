@@ -9,6 +9,9 @@ using ClassLibrary;
 
 namespace CompletelySOLID.Controllers
 {
+    /// <summary>
+    /// Users Controller for the Hospital Database API
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -25,7 +28,7 @@ namespace CompletelySOLID.Controllers
         public IEnumerable<Users> GetUsers()
       {
 
-            return _context.Create().Users;
+            return _context.HospitalContext().Users;
         }
 
         // GET: api/Users/5
@@ -37,7 +40,7 @@ namespace CompletelySOLID.Controllers
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Create().Users.FindAsync(id);
+            var users = await _context.HospitalContext().Users.FindAsync(id);
 
             if (users == null)
             {
@@ -61,11 +64,11 @@ namespace CompletelySOLID.Controllers
                 return BadRequest();
             }
 
-            _context.Create().ModifyState(users);
+            _context.HospitalContext().ModifyState(users);
 
             try
             {
-                await _context.Create().SaveChangesAsync();
+                await _context.HospitalContext().SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -91,8 +94,8 @@ namespace CompletelySOLID.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Create().Users.Add(users);
-            await _context.Create().SaveChangesAsync();
+            _context.HospitalContext().Users.Add(users);
+            await _context.HospitalContext().SaveChangesAsync();
 
             return CreatedAtAction("GetUsers", new { id = users.UserId }, users);
         }
@@ -106,21 +109,21 @@ namespace CompletelySOLID.Controllers
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Create().Users.FindAsync(id);
+            var users = await _context.HospitalContext().Users.FindAsync(id);
             if (users == null)
             {
                 return NotFound();
             }
 
-            _context.Create().Users.Remove(users);
-            await _context.Create().SaveChangesAsync();
+            _context.HospitalContext().Users.Remove(users);
+            await _context.HospitalContext().SaveChangesAsync();
 
             return Ok(users);
         }
 
         private bool UsersExists(int id)
         {
-            return _context.Create().Users.Any(e => e.UserId == id);
+            return _context.HospitalContext().Users.Any(e => e.UserId == id);
         }
     }
 }
