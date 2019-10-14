@@ -1,5 +1,6 @@
 //using ClassLibrary.EFAutoGen;
 using ClassLibrary;// using custom dbcontext
+using ClassLibrary.Context;
 using ClassLibrary.Interfaces;
 //using custom db context
 using ClassLibrary.Models;
@@ -35,8 +36,8 @@ namespace CompletelySOLID
             {
                 configuration.RootPath = "ClientApp/build";
             });
-            //dependency injection using .net core  service descriptor
-            services.Add(new ServiceDescriptor(typeof(IHospitalContext), new HospitalContext()));
+            //register the dbcontext factory to instantiate the db contextices based on method
+            services.Add(new ServiceDescriptor(typeof(IDbContextFactory), new DbContextFactory()));
             services.Add(new ServiceDescriptor(typeof(IGuard), new Guard()));
             //configure DB context with connection string from appsettings.json (also have the app configuration class on model configuring to see both methods)
             //services.AddDbContext<HospitalContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Context")));

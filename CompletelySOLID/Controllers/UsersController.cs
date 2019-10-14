@@ -13,9 +13,9 @@ namespace CompletelySOLID.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IHospitalContext _context;
+        private readonly IDbContextFactory _context;
 
-        public UsersController(IHospitalContext context)
+        public UsersController(IDbContextFactory context)
         {
             _context = context;
         }
@@ -23,9 +23,9 @@ namespace CompletelySOLID.Controllers
         // GET: api/Users
         [HttpGet]
         public IEnumerable<Users> GetUsers()
-        {
+      {
 
-            return _context.Users;
+            return _context.Create().Users;
         }
 
         // GET: api/Users/5
@@ -37,7 +37,7 @@ namespace CompletelySOLID.Controllers
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.FindAsync(id);
+            var users = await _context.Create().Users.FindAsync(id);
 
             if (users == null)
             {
@@ -61,11 +61,11 @@ namespace CompletelySOLID.Controllers
                 return BadRequest();
             }
 
-            _context.ModifyState(users);
+            _context.Create().ModifyState(users);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.Create().SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -91,8 +91,8 @@ namespace CompletelySOLID.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Users.Add(users);
-            await _context.SaveChangesAsync();
+            _context.Create().Users.Add(users);
+            await _context.Create().SaveChangesAsync();
 
             return CreatedAtAction("GetUsers", new { id = users.UserId }, users);
         }
@@ -106,21 +106,21 @@ namespace CompletelySOLID.Controllers
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.FindAsync(id);
+            var users = await _context.Create().Users.FindAsync(id);
             if (users == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(users);
-            await _context.SaveChangesAsync();
+            _context.Create().Users.Remove(users);
+            await _context.Create().SaveChangesAsync();
 
             return Ok(users);
         }
 
         private bool UsersExists(int id)
         {
-            return _context.Users.Any(e => e.UserId == id);
+            return _context.Create().Users.Any(e => e.UserId == id);
         }
     }
 }
