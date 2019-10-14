@@ -12,14 +12,13 @@ namespace CompletelySOLID.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-        private readonly IHospitalContext context;
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-        SampleDataController( IHospitalContext Ihosptial)
+        SampleDataController()
         {
-            context = Ihosptial;
+            
         }
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts(int startDateIndex)
@@ -31,12 +30,6 @@ namespace CompletelySOLID.Controllers
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
-        }
-        public IEnumerable<Users> GetUsers()
-        {
-            IEnumerable<Users> users =context.Users;
-
-            return users;
         }
         public class WeatherForecast
         {
