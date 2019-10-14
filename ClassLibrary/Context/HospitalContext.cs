@@ -1,9 +1,8 @@
-﻿using ClassLibrary.Interfaces;
+﻿using ClassLibrary.AppSettings;
+using ClassLibrary.Interfaces;
 using ClassLibrary.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
@@ -22,5 +21,24 @@ namespace ClassLibrary
         public virtual DbSet<UserRoleHospital> UserRoleHospital { get; set; }
 
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+              AppConfiguration app = new AppConfiguration();
+              optionsBuilder.UseSqlServer(app.ConnectionString);
+            }
+        }
+        public void ModifyState(Users users)
+        {
+            HospitalContext context = new HospitalContext();
+            context.Entry(users).State = EntityState.Modified;
+        }
+
+        public Task SaveChangesAsync()
+        {
+            HospitalContext hospital = new HospitalContext();
+            return hospital.SaveChangesAsync();
+        }
     }
 }
