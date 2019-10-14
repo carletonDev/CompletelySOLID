@@ -1,34 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ClassLibrary.Models;
-using ClassLibrary.Interfaces;
-using ClassLibrary;
+using ClassLibrary.EFAutoGen;
 
 namespace CompletelySOLID.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class Users1Controller : ControllerBase
     {
         private readonly IHospitalContext _context;
 
-        public UsersController(IHospitalContext context)
+        public Users1Controller(IHospitalContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/Users1
         [HttpGet]
         public IEnumerable<Users> GetUsers()
         {
-
             return _context.Users;
         }
 
-        // GET: api/Users/5
+        // GET: api/Users1/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUsers([FromRoute] int id)
         {
@@ -47,7 +46,7 @@ namespace CompletelySOLID.Controllers
             return Ok(users);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Users1/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsers([FromRoute] int id, [FromBody] Users users)
         {
@@ -82,7 +81,7 @@ namespace CompletelySOLID.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/Users1
         [HttpPost]
         public async Task<IActionResult> PostUsers([FromBody] Users users)
         {
@@ -97,7 +96,7 @@ namespace CompletelySOLID.Controllers
             return CreatedAtAction("GetUsers", new { id = users.UserId }, users);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Users1/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsers([FromRoute] int id)
         {
