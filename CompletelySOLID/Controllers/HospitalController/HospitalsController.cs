@@ -1,70 +1,68 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ClassLibrary.Context;
 using ClassLibrary.Models;
 using ClassLibrary.Interfaces;
-using ClassLibrary;
 
-namespace CompletelySOLID.Controllers
+namespace CompletelySOLID.Controllers.HospitalController
 {
-    /// <summary>
-    /// Users Controller for the Hospital Database API
-    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class HospitalsController : ControllerBase
     {
         private readonly IDbContextFactory _context;
 
-        public UsersController(IDbContextFactory context)
+        public HospitalsController(IDbContextFactory context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/Hospitals
         [HttpGet]
-        public IEnumerable<Users> GetUsers()
-      {
-
-            return _context.HospitalContext().Users;
+        public IEnumerable<Hospital> GetHospital()
+        {
+            return _context.HospitalContext().Hospital;
         }
 
-        // GET: api/Users/5
+        // GET: api/Hospitals/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUsers([FromRoute] int id)
+        public async Task<IActionResult> GetHospital([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.HospitalContext().Users.FindAsync(id);
+            var hospital = await _context.HospitalContext().Hospital.FindAsync(id);
 
-            if (users == null)
+            if (hospital == null)
             {
                 return NotFound();
             }
 
-            return Ok(users);
+            return Ok(hospital);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Hospitals/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers([FromRoute] int id, [FromBody] Users users)
+        public async Task<IActionResult> PutHospital([FromRoute] int id, [FromBody] Hospital hospital)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != users.UserId)
+            if (id != hospital.HospitalID)
             {
                 return BadRequest();
             }
 
-            _context.HospitalContext().ModifyState(users);
+            _context.HospitalContext().Entry(hospital).State = EntityState.Modified;
 
             try
             {
@@ -72,7 +70,7 @@ namespace CompletelySOLID.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsersExists(id))
+                if (!HospitalExists(id))
                 {
                     return NotFound();
                 }
@@ -85,45 +83,45 @@ namespace CompletelySOLID.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/Hospitals
         [HttpPost]
-        public async Task<IActionResult> PostUsers([FromBody] Users users)
+        public async Task<IActionResult> PostHospital([FromBody] Hospital hospital)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.HospitalContext().Users.Add(users);
+            _context.HospitalContext().Hospital.Add(hospital);
             await _context.HospitalContext().SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.UserId }, users);
+            return CreatedAtAction("GetHospital", new { id = hospital.HospitalID }, hospital);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Hospitals/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers([FromRoute] int id)
+        public async Task<IActionResult> DeleteHospital([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.HospitalContext().Users.FindAsync(id);
-            if (users == null)
+            var hospital = await _context.HospitalContext().Hospital.FindAsync(id);
+            if (hospital == null)
             {
                 return NotFound();
             }
 
-            _context.HospitalContext().Users.Remove(users);
+            _context.HospitalContext().Hospital.Remove(hospital);
             await _context.HospitalContext().SaveChangesAsync();
 
-            return Ok(users);
+            return Ok(hospital);
         }
 
-        private bool UsersExists(int id)
+        private bool HospitalExists(int id)
         {
-            return _context.HospitalContext().Users.Any(e => e.UserId == id);
+            return _context.HospitalContext().Hospital.Any(e => e.HospitalID == id);
         }
     }
 }
