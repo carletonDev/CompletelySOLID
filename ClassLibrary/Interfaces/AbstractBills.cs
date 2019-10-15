@@ -7,6 +7,9 @@ using System.Text;
 
 namespace ClassLibrary
 {
+    /// <summary>
+    /// null object pattern for model creation and handling nulls
+    /// </summary>
     public abstract class AbstractBills
     {
         public static readonly NullBills nullBills = NullBillInst;

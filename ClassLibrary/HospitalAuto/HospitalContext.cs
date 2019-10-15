@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ClassLibrary.EFAutoGen
 {
-    public partial class HospitalContext : DbContext,IHospitalContext
+    public partial class HospitalContext : DbContext
     {
         public HospitalContext()
         {
@@ -31,7 +31,7 @@ namespace ClassLibrary.EFAutoGen
             if (!optionsBuilder.IsConfigured)
             {
                 AppConfiguration app = new AppConfiguration();
-                optionsBuilder.UseSqlServer(app.ConnectionString);
+                optionsBuilder.UseSqlServer(app.HospitalString);
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

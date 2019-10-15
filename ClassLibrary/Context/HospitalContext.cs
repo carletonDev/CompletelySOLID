@@ -2,11 +2,13 @@
 using ClassLibrary.Interfaces;
 using ClassLibrary.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace ClassLibrary.Context
 {
-    public partial class HospitalContext : DbContext,IHospitalContext
+
+    public partial class HospitalContext : DbContext
     {
         public HospitalContext() { }
         public HospitalContext(DbContextOptions<HospitalContext> options) : base(options) { }
@@ -26,7 +28,7 @@ namespace ClassLibrary
             if (!optionsBuilder.IsConfigured)
             {
               AppConfiguration app = new AppConfiguration();
-              optionsBuilder.UseSqlServer(app.ConnectionString);
+              optionsBuilder.UseSqlServer(app.HospitalString);
             }
         }
         public void ModifyState(Users users)
