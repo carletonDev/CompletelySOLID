@@ -1,19 +1,10 @@
 import Axios from "axios";
 import { url} from "../reducers/Pharmacy";
 
-export const createPharmacy=(data)=>{
+export const createPharmacy=()=>{
     return{
         type:postPharmacy,
-        payload:{
-            pharmacyId:data.pharmacyId,
-            pharmacyName:data.pharmacyName,
-            pharmacyAddress:data.pharmacyAddress,
-            city:data.city,
-            state:data.state,
-            zip:data.zip,
-            pharmacyMedicine:data.pharmacyMedicine,
-            salary:data.salary
-        }
+        payload:any
     }
 };
 

@@ -1,4 +1,3 @@
-import Axios from "axios";
 
 export const getPharmacy ="getPharmacy";
 export const postPharmacy ="newPharmacy";
