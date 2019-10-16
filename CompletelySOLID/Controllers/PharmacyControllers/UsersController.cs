@@ -12,11 +12,11 @@ namespace CompletelySOLID.Controllers.PharmacyControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IDbContextFactory _context;
 
-        public UsersController(IDbContextFactory context)
+        public UserController(IDbContextFactory context)
         {
             _context = context;
         }
