@@ -71,7 +71,7 @@ namespace CompletelySOLID
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
@@ -80,15 +80,15 @@ namespace CompletelySOLID
                     template: "{controller}/{action=Index}/{id?}");
             });
             //single page application react enabled cors to edit in vs code as well
-            //app.UseSpa(spa =>
-            //{
-            //    spa.Options.SourcePath = "ClientApp";
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
 
-            //    if (env.IsDevelopment())
-            //    {
-            //        spa.UseReactDevelopmentServer(npmScript: "start");
-            //    }
-            //});
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
             //enable swagger
             app.UseSwagger();
             app.UseSwaggerUI(c =>
