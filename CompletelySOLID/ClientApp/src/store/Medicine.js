@@ -2,7 +2,7 @@
 import{createReducer,createAction} from 'redux-starter-kit'
 
 //inital state
-const state = { medicine:[] };
+const state = { medicine:[ ] };
 
 //creating action  using redux starter kit method
 
