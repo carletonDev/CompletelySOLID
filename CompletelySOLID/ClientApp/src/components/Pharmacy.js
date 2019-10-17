@@ -54,7 +54,7 @@ class PharmacyList extends React.Component{
         return(<DataTable
                 title="Pharmacy List"
                 columns={columns}
-                data={this.state.pharmacy}/>)
+                data={state.pharmacy}/>)
     }
 }
 export default PharmacyList;

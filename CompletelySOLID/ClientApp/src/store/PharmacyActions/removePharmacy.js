@@ -12,7 +12,7 @@ export const removePharmacySuccess = id => {
     return (dispatch) => {
         return Axios.delete('${url}/${id}')
             .then(res => {
-                dispatch(removePharmacy(res.data));
+                dispatch(removePharmacy(res.data.pharmacyId));
             }).catch(error => {
                 throw (error);
             });

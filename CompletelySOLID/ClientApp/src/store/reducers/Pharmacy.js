@@ -5,6 +5,7 @@ export const deletePharmacy="deletePharmacy";
 export const putPharmacysuccess="putPharmacy";
 export const initalState={pharmacy:[]}
 export const url ='api/pharmacies';
+
 //method to dispatch with the action type to store list of pharmacies
 
 export const updatepharmacy=(pharmacy)=>{
