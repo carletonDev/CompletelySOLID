@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import DataTable from 'react-data-table-component';
+import { any } from 'prop-types';
 
-const state = {medicine:[]};
+const state = { medicine: []};
 const columns =[
 {
     name:'Id',

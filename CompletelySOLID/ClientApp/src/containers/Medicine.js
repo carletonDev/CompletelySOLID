@@ -16,4 +16,4 @@ const MapStateToProps=(state)=>{
     return state
 };
 
-export default connect(MapStateToProps,Actions.getMedicine)(MedicineContainer)
+export default connect(MapStateToProps, Actions.getMedicine)(MedicineContainer)
