@@ -3,7 +3,7 @@ export const getPharmacy ="getPharmacy";
 export const postPharmacy ="newPharmacy";
 export const deletePharmacy="deletePharmacy";
 export const putPharmacysuccess="putPharmacy";
-export const initalState={pharmacy:[]}
+ const initalState={pharmacy:[]}
 export const url ='api/pharmacies';
 
 //method to dispatch with the action type to store list of pharmacies
@@ -17,7 +17,7 @@ return {
 //method to dispatch to create a new pharmacy
 
 export const reducer = (state, action) => {
-    state = state || initialState;
+    state = state || initalState;
   // if the action type is equal to this constant string
     if (action.type===getPharmacy) {
       return {

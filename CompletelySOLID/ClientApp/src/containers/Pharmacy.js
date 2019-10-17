@@ -1,18 +1,22 @@
 import PharmacyList from '../components/Pharmacy';
-import connect from 'react-redux'
-import { Component } from 'react';
-import getPharmacy from '../store/PharmacyActions/getPharmacy'
+import { connect } from 'react-redux';
+import React,{ Component } from 'react';
+import { getPharmacy } from '../store/PharmacyActions/getPharmacy'
 
 
 class PharmacyContainer extends Component
 {
 
         render(){
-            <PharmacyList/>
+          return (<PharmacyList/>)
         }
 }
 
-const mapStateToProps=(state)=>{
+const mapStateToProps = (state) => {
     return state
 }
-export default connect(mapStateToProps,getPharmacy)(PharmacyContainer)
+
+export default connect(
+    mapStateToProps,
+    getPharmacy
+)(PharmacyContainer);

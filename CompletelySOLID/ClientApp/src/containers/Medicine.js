@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import * as Actions from '../../src/store/actions/MedicineActions';
@@ -8,9 +8,10 @@ import MedicineList from "../components/MedicineList";
 class MedicineContainer extends Component{
 
     render(){
-        <MedicineList/>
+       return(<MedicineList/>)
     }
-}
+};
+
 const MapStateToProps=(state)=>{
     return state
 };
