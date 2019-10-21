@@ -41,7 +41,7 @@ namespace ClassLibrary.Pharmacy
 
                 entity.Property(e => e.Cost)
                     .HasColumnName("cost")
-                    .HasColumnType("decimal(5, 2)");
+                    .HasColumnType("decimal(10, 2)");
 
                 entity.Property(e => e.MedicineName)
                     .HasColumnName("medicineName")
@@ -148,7 +148,7 @@ namespace ClassLibrary.Pharmacy
 
                 entity.Property(e => e.Amount)
                     .HasColumnName("amount")
-                    .HasColumnType("decimal(5, 2)");
+                    .HasColumnType("decimal(10, 2)");
 
                 entity.Property(e => e.CustomerId).HasColumnName("customerId");
 
