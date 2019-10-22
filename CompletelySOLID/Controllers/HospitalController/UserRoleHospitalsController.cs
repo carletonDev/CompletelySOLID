@@ -11,7 +11,7 @@ using ClassLibrary.Interfaces;
 
 namespace CompletelySOLID.Controllers.HospitalController
 {
-    [Route("api/[controller]")]
+    [Route("api/urh")]
     [ApiController]
     public class UserRoleHospitalsController : ControllerBase
     {
@@ -82,7 +82,16 @@ namespace CompletelySOLID.Controllers.HospitalController
 
             return NoContent();
         }
-
+        /// <summary>
+        /// finds a user and whether they have been a patient doctor or admin  at any particular hospital
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        [HttpGet("{firstName}/{lastName}/{roleType}/{hosptialName}")]
+        public IEnumerable<UserRoleHospital> FindUserRoleHospital([FromRoute] string firstName,string lastName,string roleType,string hosptialName)
+        {
+            return _context.HospitalContext().UserRoleHospital.Where(m => m.Users.FirstName == firstName && m.Users.LastName == lastName && m.Role.RoleType == roleType && m.Hospital.HospitalName == hosptialName);
+        }
         // POST: api/UserRoleHospitals
         [HttpPost]
         public async Task<IActionResult> PostUserRoleHospital([FromBody] UserRoleHospital userRoleHospital)

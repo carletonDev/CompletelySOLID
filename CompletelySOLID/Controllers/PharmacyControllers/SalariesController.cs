@@ -115,6 +115,25 @@ namespace CompletelySOLID.Controllers.PharmacyControllers
 
             return Ok(salary);
         }
+        //from an object body delete
+        [HttpDelete]
+        public async Task<IActionResult>DeleteSalary([FromBody] Users user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var salary =  _context.PharmacyContext().Salary.ToList().Find(m=>m.EmployeeId==user.UserId);
+            if (salary == null)
+            {
+                return NotFound();
+            }
+            _context.PharmacyContext().Salary.Remove(salary);
+
+            await _context.PharmacyContext().SaveChangesAsync();
+            return Ok(salary);
+
+        }
 
         private bool SalaryExists(int id)
         {

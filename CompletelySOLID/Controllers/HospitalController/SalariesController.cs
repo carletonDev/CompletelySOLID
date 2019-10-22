@@ -13,11 +13,11 @@ namespace CompletelySOLID.Controllers.HospitalController
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SalariesController : ControllerBase
+    public class HospitalSalaryController : ControllerBase
     {
         private readonly IDbContextFactory _context;
 
-        public SalariesController(IDbContextFactory context)
+        public HospitalSalaryController(IDbContextFactory context)
         {
             _context = context;
         }

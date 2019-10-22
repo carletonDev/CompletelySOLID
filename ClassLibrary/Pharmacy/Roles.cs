@@ -7,5 +7,6 @@ namespace ClassLibrary.Pharmacy
     {
         public int RoleId { get; set; }
         public string RoleType { get; set; }
+        public ICollection<Users> UserRoles { get; set; }
     }
 }

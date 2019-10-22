@@ -1,12 +1,13 @@
 import Axios from 'axios';
 import { list, remove, add, getId } from '../Medicine';
 //the entity framework core controller has no title to use when you make the api so when using axios you have to set the data value to the inital value in the promise because it has additional properties
-export  const getMedicine = () => {
-   const request = fetch('api/medicine')
+export const getMedicine = () => {
     return (dispatch) => {
-        const medicine = request.json();
-        dispatch(list(medicine))
-    }
+       Axios.get('api/medicine').then(medicine => {
+            console.log(medicine.data)
+            dispatch(list(medicine.data))
+        })
+    };
 }
 export const deleteMedicine = (id) => {
     return (dispatch) => {

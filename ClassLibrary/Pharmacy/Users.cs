@@ -13,13 +13,16 @@ namespace ClassLibrary.Pharmacy
         }
 
         public int UserId { get; set; }
+        public int? RoleId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public int? Zip { get; set; }
+        public Roles Role { get; set; }
 
+      
         public ICollection<Salary> Salary { get; set; }
         public ICollection<Transactions> TransactionsCustomer { get; set; }
         public ICollection<Transactions> TransactionsEmployee { get; set; }

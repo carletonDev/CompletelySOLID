@@ -196,6 +196,11 @@ namespace ClassLibrary.Pharmacy
                     .HasMaxLength(50);
 
                 entity.Property(e => e.Zip).HasColumnName("zip");
+                entity.Property(e => e.RoleId).HasColumnName("roleId");
+                entity.HasOne(d => d.Role)
+                .WithMany(p => p.UserRoles)
+                .HasForeignKey(d => d.RoleId)
+                .HasConstraintName("FK__Users__roleId__38996AB5");
             });
         }
     }
