@@ -6,7 +6,7 @@
     "antd": "^3.24.0",
     "axios": "^0.19.0",
     "bootstrap": "^3.4.1",
-    "immer": "^4.0.1",
+    "immer": "^9.0.6",
     "react": "^16.10.2",
     "react-bootstrap": "^0.31.5",
     "react-bulma-components": "^3.1.3",
